@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>悠圈 | 广州地铁生活圈</title>
+    <meta
+      name="description"
+      content="悠圈是面向广州地铁 App / 小程序场景设计的本地生活门户，支持分类浏览、站点精选、商家详情、领券、收藏和商家子站。"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <div class="phone-frame">
+        <main class="page-stack">
+          <section class="app-page active" data-page="home">
+            <header class="metro-home-header">
+              <div class="status-strip">
+                <span></span>
+                <div class="status-icons">
+                  <span>5G</span>
+                  <span>77%</span>
+                </div>
+              </div>
+              <div class="metro-brand-row">
+                <button class="icon-button" id="menu-button" type="button" aria-label="菜单">＋</button>
+                <button class="care-button" id="care-toggle" type="button">关怀版</button>
+              </div>
+            </header>
+
+            <div class="page-scroll">
+              <section class="hero-banner-card green">
+                <div class="banner-copy">
+                  <p>精准出行</p>
+                  <h1>优选路径</h1>
+                  <span>把站点生活和出行服务放在一起</span>
+                </div>
+              </section>
+
+              <section class="quick-grid">
+                <button class="quick-entry" data-nav-page="coupon">
+                  <span>🏷️</span>
+                  <strong>票券</strong>
+                </button>
+                <button class="quick-entry" data-open-overlay="station">
+                  <span>🗺️</span>
+                  <strong>线网圈</strong>
+                </button>
+                <button class="quick-entry" data-nav-page="youquan">
+                  <span>💗</span>
+                  <strong>悠圈</strong>
+                </button>
+                <button class="quick-entry" data-open-overlay="favorites">
+                  <span>⭐</span>
+                  <strong>收藏</strong>
+                </button>
+              </section>
+
+              <section class="service-grid">
+                <button class="service-entry" data-nav-page="youquan">客流实况</button>
+                <button class="service-entry" data-open-overlay="station">站点信息</button>
+                <button class="service-entry" data-nav-page="coupon">优惠券</button>
+                <button class="service-entry" data-open-overlay="microsite">商家子站</button>
+              </section>
+
+              <section class="announcement-card">
+                <strong>关于悠圈试运营版开放商家生活服务的公告</strong>
+              </section>
+
+              <section class="home-tabs">
+                <button class="home-tab active" data-home-tab="newlines">新线信息</button>
+                <button class="home-tab" data-home-tab="culture">文化产品</button>
+                <button class="home-tab" data-home-tab="insight">地铁揭秘</button>
+                <button class="home-tab" data-home-tab="metroplus">更多</button>
+              </section>
+
+              <section id="home-feed" class="home-feed"></section>
+            </div>
+          </section>
+
+          <section class="app-page" data-page="youquan">
+            <header class="youquan-header">
+              <div class="status-strip minimal">
+                <span class="youquan-title">悠圈</span>
+                <div class="status-icons">
+                  <span>📍 东平</span>
+                </div>
+              </div>
+              <div class="search-bar">
+                <label class="search-field">
+                  <span class="search-icon">⌕</span>
+                  <input id="search-input" type="search" placeholder="请输入站点名称 / 商家名称" />
+                </label>
+                <button id="search-button" type="button" class="search-button">搜索</button>
+              </div>
+            </header>
+
+            <div class="page-scroll">
+              <section class="youquan-hero-card" id="station-feature-trigger">
+                <div class="hero-image market-style"></div>
+                <div class="hero-label">
+                  <span>站点精选</span>
+                  <strong>点进来查看沿线精选商家与子站</strong>
+                </div>
+              </section>
+
+              <section class="category-grid">
+                <button class="category-card active" data-category="好吃">
+                  <span class="category-bubble food">🍜</span>
+                  <strong>悠好吃</strong>
+                </button>
+                <button class="category-card" data-category="好玩">
+                  <span class="category-bubble fun">🎡</span>
+                  <strong>悠好玩</strong>
+                </button>
+                <button class="category-card" data-category="好物">
+                  <span class="category-bubble goods">🛍️</span>
+                  <strong>悠好物</strong>
+                </button>
+                <button class="category-card" data-category="好住">
+                  <span class="category-bubble stay">🛏️</span>
+                  <strong>悠好住</strong>
+                </button>
+                <button class="category-card" data-category="好房">
+                  <span class="category-bubble home">🏡</span>
+                  <strong>悠好房</strong>
+                </button>
+              </section>
+
+              <section class="promo-banner-card">
+                <div>
+                  <p>悠享生活</p>
+                  <h2>圈住美好</h2>
+                  <span>点击任意卡片即可领取演示优惠券</span>
+                </div>
+                <button class="pill-action" data-action="claim-all" type="button">一键领券</button>
+              </section>
+
+              <section class="section-head">
+                <div>
+                  <p class="section-tag">悠悠推荐</p>
+                  <h3>运营位</h3>
+                </div>
+                <button id="refresh-button" class="text-button" type="button">换一批</button>
+              </section>
+
+              <section class="feature-grid">
+                <button class="feature-card pink" data-open-overlay="coupon">
+                  <div>
+                    <p>优惠专区</p>
+                    <strong>点击领取</strong>
+                  </div>
+                </button>
+                <button class="feature-card blue" data-open-overlay="microsite">
+                  <div>
+                    <p>商家子站</p>
+                    <strong>进入专题页</strong>
+                  </div>
+                </button>
+              </section>
+
+              <section class="section-head compact">
+                <div>
+                  <p class="section-tag">站点周边</p>
+                  <h3 id="list-title">悠好吃</h3>
+                </div>
+                <span id="active-filter-label" class="filter-pill">全部站点</span>
+              </section>
+
+              <section class="chip-row" id="station-filter-row"></section>
+
+              <section class="tab-row">
+                <button class="tab-pill active" data-sort="nearby">站点周边</button>
+                <button class="tab-pill" data-sort="latest">最新</button>
+                <button class="tab-pill" data-sort="hot">最热</button>
+                <button class="tab-pill" data-sort="favorite">收藏</button>
+              </section>
+
+              <section id="merchant-list" class="merchant-grid"></section>
+            </div>
+          </section>
+
+          <section class="app-page" data-page="coupon">
+            <header class="sub-header">
+              <h2>票券中心</h2>
+              <p>已领取的优惠券和可直接使用的站点福利</p>
+            </header>
+            <div class="page-scroll">
+              <section class="section-head compact">
+                <div>
+                  <p class="section-tag">我的票券</p>
+                  <h3 id="coupon-count-title">0 张可用</h3>
+                </div>
+              </section>
+              <section id="coupon-list" class="coupon-list"></section>
+            </div>
+          </section>
+
+          <section class="app-page" data-page="favorites">
+            <header class="sub-header">
+              <h2>我的收藏</h2>
+              <p>收藏的商家、景点、酒店和房产信息会在这里汇总</p>
+            </header>
+            <div class="page-scroll">
+              <section id="favorite-list" class="merchant-grid single-column"></section>
+            </div>
+          </section>
+        </main>
+
+        <nav class="bottom-nav">
+          <button class="nav-item active" data-nav-page="home">
+            <span>🏠</span>
+            <strong>首页</strong>
+          </button>
+          <button class="nav-item" data-nav-page="youquan">
+            <span>🤖</span>
+            <strong>悠圈</strong>
+          </button>
+          <button class="nav-item" data-nav-page="coupon">
+            <span>🎫</span>
+            <strong>票券</strong>
+          </button>
+          <button class="nav-item" data-nav-page="favorites">
+            <span>⭐</span>
+            <strong>收藏</strong>
+          </button>
+        </nav>
+      </div>
+    </div>
+
+    <dialog id="merchant-detail" class="overlay-dialog">
+      <article class="overlay-card">
+        <button class="close-button" data-close-overlay type="button">×</button>
+        <img id="detail-image" class="detail-image" alt="商家图片" />
+        <div class="detail-body">
+          <p id="detail-kicker" class="section-tag">广州地铁生活圈</p>
+          <h3 id="detail-title"></h3>
+          <p id="detail-subtitle" class="detail-subtitle"></p>
+
+          <div class="detail-actions-row">
+            <button id="detail-favorite" class="mini-action" type="button">收藏</button>
+            <button id="detail-claim" class="mini-action primary" type="button">领取优惠券</button>
+          </div>
+
+          <dl class="detail-metrics">
+            <div><dt>营业状态</dt><dd id="detail-status"></dd></div>
+            <div><dt>参考消费</dt><dd id="detail-price"></dd></div>
+            <div><dt>营业时间</dt><dd id="detail-hours"></dd></div>
+            <div><dt>联系方式</dt><dd id="detail-phone"></dd></div>
+          </dl>
+
+          <div id="detail-tags" class="tag-row"></div>
+
+          <section class="detail-section">
+            <h4>商家介绍</h4>
+            <p id="detail-desc"></p>
+          </section>
+
+          <section class="detail-section">
+            <h4>券包信息</h4>
+            <div class="coupon-banner">
+              <div>
+                <p id="detail-coupon-title"></p>
+                <strong id="detail-coupon-value"></strong>
+              </div>
+              <button id="detail-coupon-button" type="button">立即领取</button>
+            </div>
+          </section>
+
+          <section class="detail-section">
+            <h4>来源说明</h4>
+            <p id="detail-source"></p>
+          </section>
+
+          <div class="overlay-footer-actions">
+            <a id="detail-phone-link" class="action-button secondary" href="#">拨打电话</a>
+            <button id="detail-microsite" class="action-button" type="button">商家子站</button>
+          </div>
+        </div>
+      </article>
+    </dialog>
+
+    <dialog id="category-overlay" class="overlay-dialog">
+      <article class="overlay-card page-overlay">
+        <button class="close-button" data-close-overlay type="button">×</button>
+        <div class="overlay-header">
+          <p class="section-tag">分类页</p>
+          <h3 id="category-overlay-title">悠好吃</h3>
+        </div>
+        <section id="category-overlay-list" class="merchant-grid single-column"></section>
+      </article>
+    </dialog>
+
+    <dialog id="station-overlay" class="overlay-dialog">
+      <article class="overlay-card page-overlay">
+        <button class="close-button" data-close-overlay type="button">×</button>
+        <div class="overlay-header">
+          <p class="section-tag">线网圈</p>
+          <h3>最新线网与站点目录</h3>
+        </div>
+        <section id="network-highlight-list" class="network-highlight-list"></section>
+        <section id="line-filter-row" class="chip-row line-filter-row"></section>
+        <section id="line-detail-card" class="line-detail-card"></section>
+        <section id="station-overlay-list" class="station-list"></section>
+      </article>
+    </dialog>
+
+    <dialog id="microsite-overlay" class="overlay-dialog">
+      <article class="overlay-card page-overlay">
+        <button class="close-button" data-close-overlay type="button">×</button>
+        <div class="overlay-header">
+          <p class="section-tag">商家子站</p>
+          <h3 id="microsite-title">专题页</h3>
+        </div>
+        <section class="microsite-hero">
+          <img id="microsite-image" alt="商家图片" />
+          <div>
+            <p id="microsite-subtitle"></p>
+            <div class="tag-row" id="microsite-tags"></div>
+          </div>
+        </section>
+        <section class="microsite-panels">
+          <article>
+            <h4>当前优惠</h4>
+            <p id="microsite-coupon"></p>
+          </article>
+          <article>
+            <h4>联系方式</h4>
+            <p id="microsite-contact"></p>
+          </article>
+          <article>
+            <h4>站点攻略</h4>
+            <p id="microsite-guide"></p>
+          </article>
+        </section>
+        <div class="overlay-footer-actions">
+          <button id="microsite-claim" class="action-button" type="button">领取本店优惠</button>
+          <a id="microsite-link" class="action-button secondary" href="#" target="_blank" rel="noreferrer">打开主页</a>
+        </div>
+      </article>
+    </dialog>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
