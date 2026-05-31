@@ -1,6 +1,6 @@
 # youquan-site
 
-youquan-site is a mobile-first open-source prototype for metro-station local-life portals.
+A mobile-first open-source prototype for metro-station local-life portals.
 
 It explores how transit operators, city developers, and civic-tech builders can connect station information, nearby merchants, coupons, favorites, category browsing, and merchant microsites in one lightweight front-end experience.
 
@@ -20,27 +20,42 @@ This project provides an early front-end prototype for:
 
 The goal is to gradually turn this prototype into a reusable starter kit for transit-oriented local-life services and station-commerce scenarios.
 
-## Current status
+## Project structure
 
-This repository is currently an early-stage public prototype.
+```
+youquan-site/
+├── index.html          # Main entry point
+├── styles.css          # All styles (mobile-first)
+├── script.js           # Interactive behavior
+├── CONTRIBUTING.md     # Contribution guidelines
+├── ROADMAP.md          # Detailed roadmap
+├── LICENSE             # MIT license
+└── README.md           # This file
+```
 
-It includes a static front-end implementation based on:
+## Getting started
 
-- HTML
-- CSS
-- JavaScript
+Clone the repository:
 
-The project is not yet a production-ready system. It is intended as a starting point for further open-source development, refactoring, documentation, and scenario-based experimentation.
+```bash
+git clone https://github.com/kentcxt-create/youquan-site.git
+cd youquan-site
+```
 
-## Possible use cases
+Open `index.html` in your browser, or use a local server:
 
-This project may be useful for:
+```bash
+# Python
+python3 -m http.server 8000
 
-- Transit operators exploring digital service portals
-- Civic-tech developers building public-service mobile web apps
-- Commercial teams testing station-commerce concepts
-- Developers looking for a simple mobile-first local-life UI prototype
-- Teams experimenting with merchant directories, coupons, and nearby services
+# Node.js
+npx serve .
+
+# VS Code
+# Use the Live Server extension
+```
+
+Then open http://localhost:8000 in your browser.
 
 ## Features
 
@@ -54,23 +69,26 @@ Current prototype features include:
 - Lightweight front-end structure
 - Static web deployment support
 
+## Possible use cases
+
+This project may be useful for:
+
+- Transit operators exploring digital service portals
+- Civic-tech developers building public-service mobile web apps
+- Commercial teams testing station-commerce concepts
+- Developers looking for a simple mobile-first local-life UI prototype
+- Teams experimenting with merchant directories, coupons, and nearby services
+
+## Contributing
+
+Want to help? See [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines.
+
+Check out the [open issues](https://github.com/kentcxt-create/youquan-site/issues) to see what needs work.
+
 ## Roadmap
 
-Planned improvements include:
+See [ROADMAP.md](./ROADMAP.md) for planned improvements.
 
-- Improve README and project documentation
-- Extract merchant and coupon data into configurable JSON files
-- Improve accessibility and keyboard navigation
-- Refactor CSS for better maintainability
-- Improve responsive behavior across more screen sizes
-- Add basic tests and linting
-- Add issue templates and contribution guidelines
-- Prepare a reusable starter template version
+## License
 
-## Getting started
-
-Clone the repository:
-
-```bash
-git clone https://github.com/kentcxt-create/youquan-site.git
-cd youquan-site
+MIT
